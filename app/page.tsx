@@ -4,9 +4,19 @@ import Catalog from '@/components/Catalog/Catalog';
 import styles from './page.module.scss';
 import { getCategories, getFoods } from '@/lib/api';
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
+  const { keywords, category } = await searchParams;
+
   const categories = await getCategories();
-  const initialFoods = await getFoods(0);
+  const initialFoods = await getFoods({
+    keywords,
+    category,
+    offset: 0,
+  });
 
   return (
     <div className={styles.page}>

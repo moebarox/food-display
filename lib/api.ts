@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Category } from '@/types/category';
-import { Food, FoodAPIResponse } from '@/types/food';
+import { Food, FoodAPIRequest, FoodAPIResponse } from '@/types/food';
 
 export const getCategories = async (): Promise<Category[]> => {
   try {
@@ -14,7 +14,7 @@ export const getCategories = async (): Promise<Category[]> => {
   }
 };
 
-export const getFoods = async (offset: number = 0): Promise<Food[]> => {
+export const getFoods = async (params: FoodAPIRequest): Promise<Food[]> => {
   try {
     const { data } = await axios.get<FoodAPIResponse>(
       'https://gist.githubusercontent.com/wilson-wego/8311b463cd331099e34a1f251dad4cbf/raw/f1b04f9afe0fcc0c9270cb486b927641b7d27436/food.json'
@@ -22,7 +22,27 @@ export const getFoods = async (offset: number = 0): Promise<Food[]> => {
 
     // filter the data to simulate pagination
     const limit = 9;
-    return data.foods.slice(offset, offset + limit);
+    const offset = params.offset ?? 0;
+    const category = params.category ?? '';
+    const keywords = params.keywords?.trim() ?? '';
+
+    return data.foods
+      .filter((food) => {
+        if (category && food.categoryId !== category) {
+          return false;
+        }
+        return true;
+      })
+      .filter((food) => {
+        if (
+          keywords &&
+          !food.name.toLowerCase().includes(keywords.toLowerCase())
+        ) {
+          return false;
+        }
+        return true;
+      })
+      .slice(offset, offset + limit);
   } catch (error) {
     console.error(error);
     return [];

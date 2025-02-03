@@ -14,6 +14,12 @@ export interface Food {
   imageUrl: string;
 }
 
+export interface FoodAPIRequest {
+  keywords?: string;
+  category?: string;
+  offset?: number;
+}
+
 export interface FoodAPIResponse {
   foods: Food[];
 }
