@@ -24,7 +24,7 @@ export default function CatalogItem() {
             <Icon icon="mdi:star" />
             4.5
           </div>
-          <div className={styles['catalog-item__label-item']}>Duration</div>
+          <div className={styles['catalog-item__label-item']}>40-50 min</div>
         </div>
       </div>
     </div>
