@@ -4,7 +4,6 @@ $categoryLabel: '#{$category}__item-label';
 #{$category} {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 
   &__item {
     &-input {
