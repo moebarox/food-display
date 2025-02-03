@@ -8,29 +8,51 @@ import { getFoods } from '@/lib/api';
 import { FOOD_LIMIT } from '@/constants/api';
 import styles from './Catalog.module.scss';
 
+const MoreButton = ({
+  onClick,
+  isLoading,
+}: {
+  onClick: () => void;
+  isLoading: boolean;
+}) => (
+  <button onClick={onClick} disabled={isLoading}>
+    {isLoading ? 'Loading...' : '+ Show More'}
+  </button>
+);
+
 export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
   const [foods, setFoods] = useState<Food[]>(initialFoods);
   const searchParams = useSearchParams();
   const [hasMore, setHasMore] = useState(initialFoods.length === FOOD_LIMIT);
+  const [isLoading, setIsLoading] = useState(false);
+
   const keywords = searchParams.get('keywords') ?? '';
   const category = searchParams.get('category') ?? '';
 
   useEffect(() => {
+    setIsLoading(true);
     if (initialFoods.length < FOOD_LIMIT) {
       setHasMore(false);
     } else {
       setHasMore(true);
     }
     setFoods(initialFoods);
+    setIsLoading(false);
   }, [initialFoods]);
 
   const handleMore = async () => {
+    if (isLoading) {
+      return;
+    }
+
+    setIsLoading(true);
     const offset = foods.length;
     const moreFoods = await getFoods({ keywords, category, offset });
     if (moreFoods.length < FOOD_LIMIT) {
       setHasMore(false);
     }
     setFoods([...foods, ...moreFoods]);
+    setIsLoading(false);
   };
 
   return (
@@ -42,7 +64,7 @@ export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
       </section>
       {hasMore && (
         <section className={styles['catalog-more']}>
-          <button onClick={handleMore}>+ Show More</button>
+          <MoreButton onClick={handleMore} isLoading={isLoading} />
         </section>
       )}
     </>
