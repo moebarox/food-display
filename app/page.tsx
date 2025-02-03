@@ -1,14 +1,17 @@
 import FormSearch from '@/components/FormSearch';
 import CategoryFilter from '@/components/CategoryFilter';
-import styles from './page.module.scss';
 import Catalog from '@/components/Catalog/Catalog';
+import styles from './page.module.scss';
+import { getCategories } from '@/lib/api';
 
-export default function Home() {
+export default async function Home() {
+  const categories = await getCategories();
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <FormSearch />
-        <CategoryFilter />
+        <CategoryFilter categories={categories} />
       </header>
       <main className={styles.main}>
         <Catalog />
