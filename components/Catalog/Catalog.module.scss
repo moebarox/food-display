@@ -16,6 +16,10 @@ $catalog: '.catalog';
       border: 1px solid #ffc600;
       cursor: pointer;
       font-weight: 500;
+
+      &:hover {
+        background: darken(#f8f8f8, 5%);
+      }
     }
   }
 }

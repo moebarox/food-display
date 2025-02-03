@@ -22,9 +22,10 @@
     border: 1px solid #ccc;
     width: 100%;
     outline: none;
+    cursor: text;
 
     &:focus {
-      border-color: #333;
+      border-color: darken(#ccc, 20%);
     }
   }
 }
