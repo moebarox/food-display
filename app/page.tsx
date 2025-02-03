@@ -1,30 +1,15 @@
 import Image from 'next/image';
-import Form from 'next/form';
+import FormSearch from '@/components/FormSearch';
+import CategoryFilter from '@/components/CategoryFilter';
 import styles from './page.module.scss';
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <header>
-        <Form action="/">
-          <input
-            type="search"
-            name="keywords"
-            placeholder="Enter restaurant name"
-          />
-          <button type="submit">Submit</button>
-        </Form>
+      <header className={styles.header}>
+        <FormSearch />
+        <CategoryFilter />
       </header>
-      <nav>
-        <ul>
-          <li>
-            <a href="#">All</a>
-          </li>
-          <li>
-            <a href="#">Sushi</a>
-          </li>
-        </ul>
-      </nav>
       <main className={styles.main}>
         <section className={styles.catalog}>
           {[...Array(6)].map((_, i) => (
