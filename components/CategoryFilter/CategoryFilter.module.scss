@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $category: '.category';
 $categoryLabel: '#{$category}__item-label';
 
@@ -23,7 +25,7 @@ $categoryLabel: '#{$category}__item-label';
       border: 1px solid #ffc600;
 
       &:hover {
-        background: darken(#f8f8f8, 5%);
+        background: color.scale(#f8f8f8, $lightness: -5%);
       }
     }
 

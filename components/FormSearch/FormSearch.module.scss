@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .search {
   display: flex;
   align-items: center;
@@ -25,7 +27,7 @@
     cursor: text;
 
     &:focus {
-      border-color: darken(#ccc, 20%);
+      border-color: color.scale(#ccc, $lightness: -20%);
     }
   }
 }

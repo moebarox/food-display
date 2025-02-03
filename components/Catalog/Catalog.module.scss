@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $catalog: '.catalog';
 
 #{$catalog} {
@@ -18,7 +20,7 @@ $catalog: '.catalog';
       font-weight: 500;
 
       &:hover {
-        background: darken(#f8f8f8, 5%);
+        background: color.scale(#f8f8f8, $lightness: -5%);
       }
     }
   }

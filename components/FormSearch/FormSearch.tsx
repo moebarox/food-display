@@ -24,13 +24,6 @@ export default function FormSearch() {
 
   return (
     <div className={styles.search}>
-      <button
-        aria-label="Search"
-        className={styles['search__button']}
-        onClick={handleSearch}
-      >
-        <Icon icon={'mdi:magnify'} />
-      </button>
       <input
         type="search"
         name="keywords"
@@ -40,6 +33,13 @@ export default function FormSearch() {
         onChange={(e) => setKeywords(e.target.value)}
         onKeyDown={(e) => handleKeyDown(e)}
       />
+      <button
+        aria-label="Search"
+        className={styles['search__button']}
+        onClick={handleSearch}
+      >
+        <Icon icon={'mdi:magnify'} />
+      </button>
     </div>
   );
 }
