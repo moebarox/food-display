@@ -24,7 +24,11 @@ export default function FormSearch() {
 
   return (
     <div className={styles.search}>
-      <button className={styles['search__button']} onClick={handleSearch}>
+      <button
+        aria-label="Search"
+        className={styles['search__button']}
+        onClick={handleSearch}
+      >
         <Icon icon={'mdi:magnify'} />
       </button>
       <input
