@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Category } from '@/types/category';
 import { Food, FoodAPIRequest, FoodAPIResponse } from '@/types/food';
+import { FOOD_LIMIT } from '@/constants/api';
 
 export const getCategories = async (): Promise<Category[]> => {
   try {
@@ -21,7 +22,7 @@ export const getFoods = async (params: FoodAPIRequest): Promise<Food[]> => {
     );
 
     // filter the data to simulate pagination
-    const limit = 9;
+    const limit = FOOD_LIMIT;
     const offset = params.offset ?? 0;
     const category = params.category ?? '';
     const keywords = params.keywords?.trim() ?? '';
@@ -36,7 +37,8 @@ export const getFoods = async (params: FoodAPIRequest): Promise<Food[]> => {
       .filter((food) => {
         if (
           keywords &&
-          !food.name.toLowerCase().includes(keywords.toLowerCase())
+          !food.name.toLowerCase().includes(keywords.toLowerCase()) &&
+          !food.restaurant.toLowerCase().includes(keywords.toLowerCase())
         ) {
           return false;
         }
