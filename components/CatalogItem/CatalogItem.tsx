@@ -1,30 +1,58 @@
 import Image from 'next/image';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { Food, FoodPromotion } from '@/types/food';
 import styles from './CatalogItem.module.scss';
 
-export default function CatalogItem() {
+const Badge = ({ promotion }: { promotion: FoodPromotion }) => {
+  if (!promotion) return null;
+
+  const badgeClassModifier = {
+    gift: styles['catalog-item__badge--blue'],
+    discount: styles['catalog-item__badge--red'],
+    '1+1': styles['catalog-item__badge--purple'],
+  }[promotion];
+
+  const badgeContent = {
+    discount: '%',
+    gift: <Icon icon="mdi:gift" />,
+    '1+1': '1+1',
+  }[promotion];
+
+  return (
+    <div className={`${styles['catalog-item__badge']} ${badgeClassModifier}`}>
+      {badgeContent}
+    </div>
+  );
+};
+
+export default function CatalogItem({ food }: { food: Food }) {
   return (
     <div className={styles['catalog-item']}>
-      <div
-        className={`${styles['catalog-item__badge']} ${styles['catalog-item__badge--blue']}`}
-      >
-        <Icon icon="mdi:gift" />
-      </div>
+      <Badge promotion={food.promotion} />
       <Image
-        src="https://zen.wego.com/cdn-cgi/image/width=600/web/mock/exam/drink.jpg"
-        alt="Sushi"
+        src={food.imageUrl}
+        alt={food.name}
         width="300"
         height="200"
         className={styles['catalog-item__image']}
       />
       <div className={styles['catalog-item__info']}>
-        <h2 className={styles['catalog-item__title']}>Sushi Place</h2>
+        <h2 className={styles['catalog-item__title']}>{food.name}</h2>
         <div className={styles['catalog-item__label']}>
           <div className={styles['catalog-item__label-item']}>
             <Icon icon="mdi:star" />
-            4.5
+            {food.rating.toFixed(1)}
           </div>
-          <div className={styles['catalog-item__label-item']}>40-50 min</div>
+          <div className={styles['catalog-item__label-item']}>
+            {food.minCookTime}-{food.maxCookTime} min
+          </div>
+          {food.isNew && (
+            <div
+              className={`${styles['catalog-item__label-item']} ${styles['catalog-item__label-item--green']}`}
+            >
+              New
+            </div>
+          )}
         </div>
       </div>
     </div>

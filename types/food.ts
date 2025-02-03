@@ -1,8 +1,10 @@
+export type FoodPromotion = 'gift' | 'discount' | '1+1' | null;
+
 export interface Food {
   id: string;
   index: number;
   rating: number;
-  promotion: string | null;
+  promotion: FoodPromotion;
   isNew: boolean;
   categoryId: string;
   minCookTime: number;

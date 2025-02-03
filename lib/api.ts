@@ -14,12 +14,15 @@ export const getCategories = async (): Promise<Category[]> => {
   }
 };
 
-export const getFoods = async (): Promise<Food[]> => {
+export const getFoods = async (offset: number = 0): Promise<Food[]> => {
   try {
     const { data } = await axios.get<FoodAPIResponse>(
       'https://gist.githubusercontent.com/wilson-wego/8311b463cd331099e34a1f251dad4cbf/raw/f1b04f9afe0fcc0c9270cb486b927641b7d27436/food.json'
     );
-    return data.foods;
+
+    // filter the data to simulate pagination
+    const limit = 9;
+    return data.foods.slice(offset, offset + limit);
   } catch (error) {
     console.error(error);
     return [];
