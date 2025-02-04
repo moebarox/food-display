@@ -46,17 +46,29 @@ export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
 
   return (
     <>
-      <section className={styles.catalog}>
-        {foods.map((food, i) => (
-          <CatalogItem key={i} food={food} />
-        ))}
-      </section>
-      {hasMore && (
-        <section className={styles['catalog-more']}>
-          <Button onClick={handleMore} isLoading={isLoading}>
-            + Show More
-          </Button>
+      {foods.length === 0 ? (
+        <section
+          className={styles['catalog-empty']}
+          data-testid="catalog-empty"
+        >
+          <h2>No food found :(</h2>
+          <p>Try adjusting your search or filters.</p>
         </section>
+      ) : (
+        <>
+          <section className={styles.catalog}>
+            {foods.map((food, i) => (
+              <CatalogItem key={i} food={food} />
+            ))}
+          </section>
+          {hasMore && (
+            <section className={styles['catalog-more']}>
+              <Button onClick={handleMore} isLoading={isLoading}>
+                + Show More
+              </Button>
+            </section>
+          )}
+        </>
       )}
     </>
   );

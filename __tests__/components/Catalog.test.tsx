@@ -30,6 +30,18 @@ describe('Catalog Component', () => {
     expect(catalogItem).toBeInTheDocument();
   });
 
+  it('renders a message when no food is found', () => {
+    render(<Catalog initialFoods={[]} />);
+
+    const emptyCatalog = screen.getByTestId('catalog-empty');
+
+    expect(emptyCatalog).toBeInTheDocument();
+    expect(emptyCatalog).toHaveTextContent('No food found :(');
+    expect(emptyCatalog).toHaveTextContent(
+      'Try adjusting your search or filters.'
+    );
+  });
+
   it('renders a show more button', () => {
     const foods = Array(9)
       .fill(null)

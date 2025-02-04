@@ -5,6 +5,15 @@ $catalog: '.catalog';
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 
+  &-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 48px;
+    gap: 12px;
+  }
+
   &-more {
     display: flex;
     justify-content: center;
