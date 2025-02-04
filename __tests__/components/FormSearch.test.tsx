@@ -1,11 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import FormSearch from '@/components/FormSearch';
 
-const push = jest.fn();
+const mockPush = jest.fn();
 
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(() => ({
-    push,
+    push: mockPush,
     replace: jest.fn(),
     prefetch: jest.fn(),
     pathname: '/',
@@ -38,9 +38,9 @@ describe('FormSearch Component', () => {
 
     expect(searchbox).toHaveValue('restaurant');
 
-    button.click();
+    fireEvent.click(button);
 
-    expect(push).toHaveBeenCalledWith('/?keywords=restaurant');
+    expect(mockPush).toHaveBeenCalledWith('/?keywords=restaurant');
   });
 
   it('handles press enter on searchbox', () => {
@@ -53,6 +53,6 @@ describe('FormSearch Component', () => {
     expect(searchbox).toHaveValue('restaurant');
 
     fireEvent.keyDown(searchbox, { key: 'Enter', code: 'Enter' });
-    expect(push).toHaveBeenCalledWith('/?keywords=restaurant');
+    expect(mockPush).toHaveBeenCalledWith('/?keywords=restaurant');
   });
 });

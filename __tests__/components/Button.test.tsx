@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Button from '@/components/Button';
 
 describe('Button Component', () => {
@@ -28,7 +28,7 @@ describe('Button Component', () => {
 
     const button = screen.getByRole('button');
 
-    button.click();
+    fireEvent.click(button);
 
     expect(handleClick).toHaveBeenCalledTimes(1);
   });

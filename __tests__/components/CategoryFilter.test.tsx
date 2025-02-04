@@ -1,11 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import CategoryFilter from '@/components/CategoryFilter';
 
-const push = jest.fn();
+const mockPush = jest.fn();
 
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(() => ({
-    push,
+    push: mockPush,
     replace: jest.fn(),
     prefetch: jest.fn(),
     pathname: '/',
@@ -39,6 +39,6 @@ describe('CategoryFilter Component', () => {
 
     fireEvent.click(radio);
 
-    expect(push).toHaveBeenCalledWith('/?category=1');
+    expect(mockPush).toHaveBeenCalledWith('/?category=1');
   });
 });

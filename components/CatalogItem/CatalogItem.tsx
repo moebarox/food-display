@@ -30,7 +30,10 @@ const Badge = ({ promotion }: { promotion: FoodPromotion }) => {
 
 export default function CatalogItem({ food }: { food: Food }) {
   return (
-    <div className={styles['catalog-item']}>
+    <div
+      className={styles['catalog-item']}
+      data-testid={`catalog-item-${food.id}`}
+    >
       <Badge promotion={food.promotion} />
       <Image
         src={food.imageUrl}
