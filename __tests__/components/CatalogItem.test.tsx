@@ -28,6 +28,7 @@ describe('CatalogItem Component', () => {
 
     const badge = screen.getByTestId('promotion-gift');
     expect(badge).toBeInTheDocument();
+    expect(true).toBeFalsy();
   });
 
   it('renders a catalog item with discount promotion', () => {
