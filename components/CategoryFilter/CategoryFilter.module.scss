@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $category: '.category';
 $categoryLabel: '#{$category}__item-label';
 
@@ -11,6 +13,7 @@ $categoryLabel: '#{$category}__item-label';
 
       &:checked + #{$categoryLabel} {
         background: #ffc600;
+        font-weight: 700;
       }
     }
 
@@ -20,11 +23,21 @@ $categoryLabel: '#{$category}__item-label';
       cursor: pointer;
       padding: 8px 16px;
       border: 1px solid #ffc600;
+
+      &:hover {
+        background: color.scale(#f8f8f8, $lightness: -5%);
+      }
     }
 
     &:first-child {
       #{$categoryLabel} {
         border-radius: 12px 0 0 12px;
+      }
+    }
+
+    &:not(:first-child) {
+      #{$categoryLabel} {
+        border-left: none;
       }
     }
 

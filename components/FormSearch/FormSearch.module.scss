@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .search {
   display: flex;
   align-items: center;
@@ -22,9 +24,10 @@
     border: 1px solid #ccc;
     width: 100%;
     outline: none;
+    cursor: text;
 
     &:focus {
-      border-color: #333;
+      border-color: color.scale(#ccc, $lightness: -20%);
     }
   }
 }

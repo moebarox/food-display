@@ -5,17 +5,17 @@ $catalog: '.catalog';
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 
+  &-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 48px;
+    gap: 12px;
+  }
+
   &-more {
     display: flex;
     justify-content: center;
-
-    button {
-      border-radius: var(--border-radius);
-      padding: 8px 16px;
-      background: transparent;
-      border: 1px solid #ffc600;
-      cursor: pointer;
-      font-weight: 500;
-    }
   }
 }

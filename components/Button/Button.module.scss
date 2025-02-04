@@ -1,0 +1,14 @@
+@use 'sass:color';
+
+.button {
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #ffc600;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background: color.scale(#f8f8f8, $lightness: -5%);
+  }
+}
