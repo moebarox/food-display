@@ -13,10 +13,13 @@ export default function FormSearch() {
   const handleSearch = () => {
     const query = new URLSearchParams(searchParams.toString());
     query.set('keywords', keywords);
+
+    // update the URL with the new keywords
     router.push(`/?${query.toString()}`);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // search when the user presses Enter
     if (e.key === 'Enter') {
       handleSearch();
     }

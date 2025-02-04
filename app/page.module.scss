@@ -4,7 +4,8 @@
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
 
   display: grid;
-  width: 975px;
+  width: 100%;
+  max-width: 975px;
   margin: 0 auto;
   gap: 48px;
   padding: 24px;
@@ -34,9 +35,5 @@
   .page {
     padding: 32px;
     padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
   }
 }

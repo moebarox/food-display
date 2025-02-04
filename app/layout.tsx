@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import './globals.scss';
+import '@/styles/globals.scss';
 
 const title = 'Food Delivery Catalog - Your Favorite Meals Delivered';
 const description =

@@ -16,6 +16,8 @@ export default function CategoryFilter({
   const handleChangeCategory = (category: string) => {
     const query = new URLSearchParams(searchParams.toString());
     query.set('category', category);
+
+    // update the URL with the new category
     router.push(`/?${query.toString()}`);
   };
 

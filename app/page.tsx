@@ -11,6 +11,7 @@ export default async function Home({
 }) {
   const { keywords, category } = await searchParams;
 
+  // fetch categories and foods for the initial render
   const categories = await getCategories();
   const initialFoods = await getFoods({
     keywords,
