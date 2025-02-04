@@ -3,22 +3,11 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import CatalogItem from '@/components/CatalogItem';
+import Button from '@/components/Button';
 import { Food } from '@/types/food';
 import { getFoods } from '@/lib/api';
 import { FOOD_LIMIT } from '@/constants/api';
 import styles from './Catalog.module.scss';
-
-const MoreButton = ({
-  onClick,
-  isLoading,
-}: {
-  onClick: () => void;
-  isLoading: boolean;
-}) => (
-  <button onClick={onClick} disabled={isLoading}>
-    {isLoading ? 'Loading...' : '+ Show More'}
-  </button>
-);
 
 export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
   const [foods, setFoods] = useState<Food[]>(initialFoods);
@@ -64,7 +53,9 @@ export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
       </section>
       {hasMore && (
         <section className={styles['catalog-more']}>
-          <MoreButton onClick={handleMore} isLoading={isLoading} />
+          <Button onClick={handleMore} isLoading={isLoading}>
+            + Show More
+          </Button>
         </section>
       )}
     </>
