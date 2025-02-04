@@ -13,12 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '16'  # Adjust the Node.js version as needed
-      #     cache: 'npm'  # Enables built-in caching for npm (alternative: use actions/cache)
-
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
@@ -31,4 +25,4 @@ jobs:
         run: npm ci  # Faster and more reliable than 'npm install' (ensures a clean state)
 
       - name: Run unit tests
-        run: npm test
+        run: npm test:ci
