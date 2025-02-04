@@ -23,7 +23,7 @@ export default function CategoryFilter({
 
   return (
     <div className={styles.category}>
-      <div className={styles['category__item']}>
+      <div className={styles['category__item']} data-testid="category-all">
         <input
           type="radio"
           name="category"
@@ -41,7 +41,11 @@ export default function CategoryFilter({
         </label>
       </div>
       {categories.map((category) => (
-        <div className={styles['category__item']} key={category.id}>
+        <div
+          className={styles['category__item']}
+          key={category.id}
+          data-testid={`category-${category.id}`}
+        >
           <input
             type="radio"
             name="category"

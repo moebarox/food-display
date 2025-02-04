@@ -33,11 +33,13 @@ export default function FormSearch() {
         placeholder="Enter restaurant name..."
         className={styles['search__input']}
         value={keywords}
+        data-testid="searchbox"
         onChange={(e) => setKeywords(e.target.value)}
         onKeyDown={(e) => handleKeyDown(e)}
       />
       <button
         aria-label="Search"
+        data-testid="search-button"
         className={styles['search__button']}
         onClick={handleSearch}
       >
