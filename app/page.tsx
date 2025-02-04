@@ -1,8 +1,8 @@
 import FormSearch from '@/components/FormSearch';
 import CategoryFilter from '@/components/CategoryFilter';
 import Catalog from '@/components/Catalog/Catalog';
-import styles from './page.module.scss';
 import { getCategories, getFoods } from '@/lib/api';
+import styles from './page.module.scss';
 
 export default async function Home({
   searchParams,
