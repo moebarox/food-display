@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import CatalogItem from '@/components/CatalogItem';
-import { generateFood } from '@/helpers/test';
+import { generateFood } from '@/helpers/test-helper';
 
 jest.mock('@iconify/react/dist/iconify.js', () => ({
   Icon: () => <span />,

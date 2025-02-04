@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import Catalog from '@/components/Catalog';
-import { generateFood } from '@/helpers/test';
+import { generateFood } from '@/helpers/test-helper';
 
 const mockGetFoods = jest.fn();
 
