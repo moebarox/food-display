@@ -1,25 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import CatalogItem from '@/components/CatalogItem';
-import { Food } from '@/types/food';
+import { generateFood } from '@/helpers/test';
 
 jest.mock('@iconify/react/dist/iconify.js', () => ({
   Icon: () => <span />,
 }));
-
-const generateFood = (override?: Partial<Food>): Food => ({
-  id: '1',
-  index: 0,
-  categoryId: '1',
-  restaurant: 'Restaurant Name',
-  name: 'Food Name',
-  imageUrl: 'https://via.placeholder.com/300x200',
-  rating: 4.5657,
-  minCookTime: 10,
-  maxCookTime: 20,
-  isNew: false,
-  promotion: null,
-  ...override,
-});
 
 describe('CatalogItem Component', () => {
   it('renders a catalog item card', () => {
