@@ -31,8 +31,8 @@ test.describe('Home page', () => {
     const searchbox = await page.getByTestId('searchbox');
 
     // Simulate search
-    searchbox.fill('pizza');
-    searchbox.press('Enter');
+    await searchbox.fill('pizza');
+    await searchbox.press('Enter');
 
     // Check the URL
     await expect(page).toHaveURL('http://127.0.0.1:3000?keywords=pizza');
@@ -42,5 +42,37 @@ test.describe('Home page', () => {
     for (const item of foodCards) {
       await expect(item).toContainText(/pizza/i);
     }
+  });
+
+  test('should be able to filter by category', async ({ page }) => {
+    const category = await page
+      .getByTestId(/category-\w+/i)
+      .getByText('Drinks');
+
+    // Simulate filter by category
+    await category.click();
+
+    // Check the URL
+    await expect(page).toHaveURL(/http:\/\/127\.0\.0\.1:3000\/\?category=\w+/);
+
+    // Check the food results
+    const foodCards = await page.getByTestId(/catalog-item-\w+/i).all();
+    for (const item of foodCards) {
+      await expect(item).toContainText('Drinks');
+    }
+  });
+
+  test('should be able to load more food', async ({ page }) => {
+    const moreButton = await page.getByTestId('catalog-more');
+
+    // Simulate load more data
+    await moreButton.click();
+
+    // Wait for request finished
+    await page.waitForLoadState('networkidle');
+
+    // Check the food results
+    const count = await page.getByTestId(/catalog-item-\w+/i).count();
+    await expect(count).toBeGreaterThan(9);
   });
 });
