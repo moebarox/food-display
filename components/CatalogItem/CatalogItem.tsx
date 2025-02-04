@@ -19,7 +19,10 @@ const Badge = ({ promotion }: { promotion: FoodPromotion }) => {
   }[promotion];
 
   return (
-    <div className={`${styles['catalog-item__badge']} ${badgeClassModifier}`}>
+    <div
+      className={`${styles['catalog-item__badge']} ${badgeClassModifier}`}
+      data-testid={`promotion-${promotion}`}
+    >
       {badgeContent}
     </div>
   );
@@ -35,20 +38,30 @@ export default function CatalogItem({ food }: { food: Food }) {
         width="300"
         height="200"
         className={styles['catalog-item__image']}
+        data-testid="food-image"
       />
       <div className={styles['catalog-item__info']}>
-        <h2 className={styles['catalog-item__title']}>{food.name}</h2>
+        <h2 className={styles['catalog-item__title']} data-testid="food-name">
+          {food.name}
+        </h2>
         <div className={styles['catalog-item__label']}>
-          <div className={styles['catalog-item__label-item']}>
+          <div
+            className={styles['catalog-item__label-item']}
+            data-testid="rating"
+          >
             <Icon icon="mdi:star" />
             {food.rating.toFixed(1)}
           </div>
-          <div className={styles['catalog-item__label-item']}>
+          <div
+            className={styles['catalog-item__label-item']}
+            data-testid="cook-time"
+          >
             {food.minCookTime}-{food.maxCookTime} min
           </div>
           {food.isNew && (
             <div
               className={`${styles['catalog-item__label-item']} ${styles['catalog-item__label-item--green']}`}
+              data-testid="new-label"
             >
               New
             </div>
