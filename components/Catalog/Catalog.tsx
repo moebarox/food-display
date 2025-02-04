@@ -69,7 +69,10 @@ export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
             ))}
           </section>
           {hasMore && (
-            <section className={styles['catalog-more']}>
+            <section
+              className={styles['catalog-more']}
+              data-testid="catalog-more"
+            >
               <Button onClick={handleMore} isLoading={isLoading}>
                 + Show More
               </Button>

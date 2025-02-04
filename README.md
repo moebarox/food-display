@@ -86,10 +86,18 @@ The build artifacts will be stored in the `.next/` directory.
 
 ## Testing
 
-To run the tests, run the following command:
+To run the unit tests, run the following command:
 
 ```bash
 npm run test
+```
+
+## E2E Testing
+
+To run the e2e tests, run the following command:
+
+```bash
+npx playwright test
 ```
 
 ## Deployment

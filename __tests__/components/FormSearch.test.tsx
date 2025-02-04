@@ -21,8 +21,8 @@ describe('FormSearch Component', () => {
   it('renders a search form', () => {
     render(<FormSearch />);
 
-    const searchbox = screen.getByRole('searchbox');
-    const button = screen.getByRole('button');
+    const searchbox = screen.getByTestId('searchbox');
+    const button = screen.getByTestId('search-button');
 
     expect(searchbox).toBeInTheDocument();
     expect(button).toBeInTheDocument();
@@ -31,8 +31,8 @@ describe('FormSearch Component', () => {
   it('handles click event on search button', () => {
     render(<FormSearch />);
 
-    const searchbox = screen.getByRole('searchbox');
-    const button = screen.getByRole('button');
+    const searchbox = screen.getByTestId('searchbox');
+    const button = screen.getByTestId('search-button');
 
     fireEvent.change(searchbox, { target: { value: 'restaurant' } });
 
@@ -46,7 +46,7 @@ describe('FormSearch Component', () => {
   it('handles press enter on searchbox', () => {
     render(<FormSearch />);
 
-    const searchbox = screen.getByRole('searchbox');
+    const searchbox = screen.getByTestId('searchbox');
 
     fireEvent.change(searchbox, { target: { value: 'restaurant' } });
 
