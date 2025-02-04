@@ -13,8 +13,8 @@ This is a food delivery app that allows users to order food from a restaurant. T
 
 Before you begin, ensure you have met the following requirements:
 
-- Node.js 18.18.0 or higher
-- NPM 8.1.0 or higher
+- Node.js 18.18 or higher
+- NPM 9.x or higher
 
 ## Installation
 
@@ -58,8 +58,9 @@ The project structure is as follows:
 ├── lib                                   # Utility functions
 ├── types                                 # Type definitions
 ├── public                                # Public assets
-├── next.config.js                        # Next.js configuration
-├── jest.config.js                        # Jest configuration
+├── next.config.ts                        # Next.js configuration
+├── jest.config.ts                        # Jest configuration
+├── tsconfig.json                         # TypeScript configuration
 └── package.json                          # Project dependencies
 ```
 
