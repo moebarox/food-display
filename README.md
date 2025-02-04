@@ -46,8 +46,7 @@ The project structure is as follows:
 ├── app
 │   ├── page.tsx                          # Main page component
 │   ├── page.module.scss                  # Page module styles
-│   ├── layout.tsx                        # Layout component
-│   └── global.scss                       # Global styles
+│   └── layout.tsx                        # Layout component
 ├── components
 │   └── SampleComponent                   # SampleComponent directory
 │       ├── SampleComponent.tsx           # SampleComponent component
@@ -57,6 +56,7 @@ The project structure is as follows:
 ├── helpers                               # Helper functions
 ├── lib                                   # Utility functions
 ├── types                                 # Type definitions
+├── styles                                # Style directory
 ├── public                                # Public assets
 ├── next.config.ts                        # Next.js configuration
 ├── jest.config.ts                        # Jest configuration
