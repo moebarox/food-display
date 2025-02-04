@@ -16,13 +16,13 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.npm  # Cache npm dependencies (alternative: path: node_modules)
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci  # Faster and more reliable than 'npm install' (ensures a clean state)
+        run: npm install
 
       - name: Run unit tests
         run: npm run test:ci
