@@ -1,6 +1,6 @@
-$catalogItem: '.catalog-item';
+$foodCard: '.food-card';
 
-#{$catalogItem} {
+#{$foodCard} {
   overflow: hidden;
   border-radius: var(--border-radius);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);

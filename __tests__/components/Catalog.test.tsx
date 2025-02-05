@@ -25,7 +25,7 @@ describe('Catalog Component', () => {
     const food = generateFood();
     render(<Catalog initialFoods={[food]} />);
 
-    const catalogItem = screen.getByTestId('catalog-item-1');
+    const catalogItem = screen.getByTestId('food-card-1');
 
     expect(catalogItem).toBeInTheDocument();
   });
@@ -48,7 +48,7 @@ describe('Catalog Component', () => {
       .map((_, idx) => generateFood({ id: idx.toString() }));
     render(<Catalog initialFoods={foods} />);
 
-    const catalogItems = screen.getAllByTestId(/catalog-item-\w+/);
+    const catalogItems = screen.getAllByTestId(/food-card-\w+/);
     const button = screen.getByRole('button');
 
     expect(catalogItems).toHaveLength(9);
@@ -72,7 +72,7 @@ describe('Catalog Component', () => {
 
     expect(mockGetFoods).toHaveBeenCalled();
 
-    const catalogItems = screen.getAllByTestId(/catalog-item-\w+/);
+    const catalogItems = screen.getAllByTestId(/food-card-\w+/);
 
     expect(catalogItems).toHaveLength(10);
   });
