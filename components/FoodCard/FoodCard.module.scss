@@ -9,9 +9,14 @@ $foodCard: '.food-card';
   cursor: pointer;
 
   &__badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 0;
     left: 0;
+    width: 55px;
+    height: 26px;
     padding: 4px 16px;
     border-bottom-right-radius: 12px;
     color: #fff;

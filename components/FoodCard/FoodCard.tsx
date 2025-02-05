@@ -28,7 +28,13 @@ const Badge = ({ promotion }: { promotion: FoodPromotion }) => {
   );
 };
 
-export default function FoodCard({ food }: { food: Food }) {
+export default function FoodCard({
+  food,
+  priority,
+}: {
+  food: Food;
+  priority: boolean;
+}) {
   return (
     <div className={styles['food-card']} data-testid={`food-card-${food.id}`}>
       <Badge promotion={food.promotion} />
@@ -38,6 +44,9 @@ export default function FoodCard({ food }: { food: Food }) {
         width="300"
         height="200"
         className={styles['food-card__image']}
+        priority={priority}
+        placeholder="blur"
+        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         data-testid="food-image"
       />
       <div className={styles['food-card__info']}>

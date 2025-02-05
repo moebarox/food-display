@@ -65,7 +65,7 @@ export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
         <>
           <section className={styles.catalog}>
             {foods.map((food, i) => (
-              <FoodCard key={i} food={food} />
+              <FoodCard key={i} food={food} priority={i < FOOD_LIMIT} />
             ))}
           </section>
           {hasMore && (
