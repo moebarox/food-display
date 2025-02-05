@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import CatalogItem from '@/components/CatalogItem';
+import FoodCard from '@/components/FoodCard';
 import Button from '@/components/Button';
 import { Food } from '@/types/food';
 import { getFoods } from '@/lib/api';
@@ -65,7 +65,7 @@ export default function Catalog({ initialFoods }: { initialFoods: Food[] }) {
         <>
           <section className={styles.catalog}>
             {foods.map((food, i) => (
-              <CatalogItem key={i} food={food} />
+              <FoodCard key={i} food={food} priority={i < FOOD_LIMIT} />
             ))}
           </section>
           {hasMore && (

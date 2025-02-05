@@ -20,7 +20,7 @@ test.describe('Home page', () => {
     }
 
     // Check food card catalog
-    const foodCards = await page.getByTestId(/catalog-item-\w+/i).all();
+    const foodCards = await page.getByTestId(/food-card-\w+/i).all();
     for (const item of foodCards) {
       await expect(item).toBeVisible();
     }
@@ -38,7 +38,7 @@ test.describe('Home page', () => {
     await expect(page).toHaveURL('http://127.0.0.1:3000?keywords=pizza');
 
     // Check the food results
-    const foodCards = await page.getByTestId(/catalog-item-\w+/i).all();
+    const foodCards = await page.getByTestId(/food-card-\w+/i).all();
     for (const item of foodCards) {
       await expect(item).toContainText(/pizza/i);
     }
@@ -56,7 +56,7 @@ test.describe('Home page', () => {
     await expect(page).toHaveURL(/http:\/\/127\.0\.0\.1:3000\/\?category=\w+/);
 
     // Check the food results
-    const foodCards = await page.getByTestId(/catalog-item-\w+/i).all();
+    const foodCards = await page.getByTestId(/food-card-\w+/i).all();
     for (const item of foodCards) {
       await expect(item).toContainText('Drinks');
     }
@@ -72,7 +72,7 @@ test.describe('Home page', () => {
     await page.waitForLoadState('networkidle');
 
     // Check the food results
-    const count = await page.getByTestId(/catalog-item-\w+/i).count();
+    const count = await page.getByTestId(/food-card-\w+/i).count();
     await expect(count).toBeGreaterThan(9);
   });
 });
