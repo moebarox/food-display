@@ -1,6 +1,6 @@
 # Food Delivery App
 
-This is a food delivery app that allows users to order food from a restaurant. The app is built using Next.js and TypeScript. Live demo can be found [here](https://food-display-ecyqmnznl-hendra-arfiansyahs-projects.vercel.app/).
+This is a food delivery app that allows users to order food from a restaurant. The app is built using Next.js and TypeScript. Live demo can be found [here](https://food-display-5encwpats-hendra-arfiansyahs-projects.vercel.app/).
 
 ## Dependencies
 
